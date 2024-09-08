@@ -1,0 +1,35 @@
+---
+title: The Song of Life and Fire
+date: 2022-02-26
+excerpt: Forest fires may seem to destruct the plants. But they can also help in maintaining the ecosystem...
+---
+
+It is the tropical winter in the Western Ghats region of India. The winter here is not different from the summer, except the mountains experiencing cooler nights. As the water becomes scarce in the ground, many plants start to flower in the hopes of starting a new generation in the upcoming monsoon rains. The grasses set seeds and become dry. The Shola mountains, a mosaic of grassland intercepted by small forest patches, turn into an excellent fuel source, waiting for a spark of ignition.
+
+<IndexedImage src="song-of-life-and-fire-1.jpeg" index={0} caption="Dry Shola grasslands during winter. Observe that the Shola forests in the valley below are evergreen." type="NORMAL" />
+
+Unlike forest fires elsewhere in the world, the burning of the Shola mountains is not disastrous. The burning here is limited to the grasslands, as the Shola forests are evergreen. The practice of burning is long-followed by local tribes to ensure the supply of fresh grass available to their cattle to graze during upcoming months. The burning usually occurs in February - March, when there are no rains. During the pre-monsoon rains during April-May, the grass will sprout, and the landscape will become green again. This regular burning is said to help maintain excessive fuel buildup and prevent aggressive grass growth, making the grass undesirable for the cattle.
+
+<ImageCompare
+  imageOne={<IndexedImage index={1} nocaption />}
+  imageTwo={<IndexedImage index={2} nocaption />}
+  caption="The Shola grassland atop a mountain. Burnt and Green. First picture is taken in the month of March, second one in the April. Observe that the burnt patches greener in the April. There is a slight perspective difference in the photos, as they were taken from different places."
+/>
+
+The fire proceeds through the front during burning, turning everything behind it into ashes. If the fire encounters a tree, it can bake its lower branches, but it can not touch the upper branches as the trees are evergreen. The fire front is very small as the fuel buildup in the grassland is less. Whenever the front reaches the forests, it gets extinguished automatically since there is nothing to burn.
+
+<IndexedImage src="song-of-life-and-fire-4.jpeg" index={3} caption="The fire front progressing through Shola grassland. Observe flying ashes. Shola forest in the background, which remains unharmed by the fire." type="NORMAL" />
+
+When viewed from a distance, especially at night, these fires appear like a bright red line slowly progressing through the mountain. If the fire is not directly in sight, the illuminated smoke may give an illusion of a volcano.
+
+<IndexedImage src="song-of-life-and-fire-5.jpeg" index={4} caption="Grassland fire viewed from a distance at night" type="FULL_WIDTH" />
+
+The recovery of the grasses after burning may start several days after the burning. I recently observed grass sprouts on a burnt mountain, with the fire still on.
+
+<IndexedImage src="song-of-life-and-fire-6.jpeg" index={5} caption="Grass sprouting after being swept through fire" type="NORMAL" />
+
+The fire may also trigger the flowering of some species with underground rhizomes. I observed one flower (please help me to identify!) raised from the ashes.
+
+<IndexedImage src="song-of-life-and-fire-7.jpeg" index={6} caption="Flowers of an unknown species raising from the ashes" type="NORMAL" />
+
+Anything in excess is obviously harmful; burning the grasslands is not an exception. Some have observed that burning the Shola grasslands multiple times a year degraded the ability of the grass to grow, which in turn caused high rainwater runoff, causing massive mudslides. In another extreme, whenever the burning is not practiced/prohibited, for example, in Kuduremukha National Park, the grass has grown as tall as an average human being. Understanding the tribal practices and observing their effects is essential, as tribal knowledge may hold the keys to solving some critical ecological issues.

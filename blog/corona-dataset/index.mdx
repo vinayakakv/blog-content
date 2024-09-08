@@ -1,0 +1,210 @@
+---
+title: CORONA - A timetravel into the past
+date: 2021-12-11
+excerpt: What started as a US spy mission helps us to understand ecological changes today.
+---
+
+The human civilization in modern times relies heavily on satellite data. It powers Google Maps, enables tracking and forecasting of extreme weather events, and supports a multitude of research areas. The historical satellite data is essential to understand how Earth is changing. With the currently available satellite data, we have observed many changes like the [destruction of Amazon rainforests](https://earthengine.google.com/timelapse#v=-10.80696,-62.36113,5.927,latLng&t=3.62&ps=50&bt=19840101&et=20201231&startDwell=0&endDwell=0 "https://earthengine.google.com/timelapse#v=-10.80696,-62.36113,5.927,latLng&t=3.62&ps=50&bt=19840101&et=20201231&startDwell=0&endDwell=0") and an increase in the number of cyclones and their intensities. However, the oldest fine-resolution satellite data does not trace back to some 30 years ago, making it an obstacle for many research.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-2.png" index={1} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-3.jpeg" index={2} nocaption hide />
+  }
+  caption="The satellite imagery of a random farmland in Chikkamagaluru from 2020 and 1985. Note the lower resolution of 1985 imagery, making it unusable for detailed analysis."
+/>
+
+Fortunately, we have fine-resolution satellite images of some parts of the Earth taken during the cold-war era. The US spy program CORONA, active between 1959 and 1972, took satellite images of the USSR and other countries for intelligence purposes. Its successors filmed the Earth for the next decade. Since there was no digital camera back then, it used analog films sent back to the Earth physically after capturing imagery. These films were then analyzed and stored. In 1995, the data was declassified and made available for public use.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-4.jpeg" index={3} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-3.jpeg" index={2} nocaption hide />
+  }
+  caption="The satellite imagery of a the same farmland in Chikkamagaluru from 1970s (CORONA data) and 1985. The resolution of CORONA satellite imagery is much better than 15 year later imagery."
+/>
+
+## The Dataset
+
+The CORONA dataset is available at [US Geographical Survey (USGS)](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-declassified-data-declassified-satellite-imagery-1 "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-declassified-data-declassified-satellite-imagery-1") website. As this data is not geo-referenced, it is hard to identify the locations and landmarks at first glance. The clouds and the shadow cast by them make the identification more difficult.
+
+<IndexedImage
+  src="corona-dataset-5.png"
+  index={4}
+  caption="The satellite imagery in CORONA data sometimes contains clouds and dark areas, making it hard to locate landmarks."
+  type="NORMAL"
+  hide
+/>
+
+I first came across this dataset at [ISRO’s Bhuvan portal](https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.php "https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.php"). ISRO has collected the imagery containing the parts of India and geo-referenced it. The CORONA dataset has multiple images of the same area taken on different days - thus, making it possible for ISRO to stitch multiple images such that the clouds are eliminated to much extent.
+
+<IndexedImage
+  src="corona-dataset-6.jpeg"
+  index={5}
+  caption="The CORONA dataset, after preprocessing by ISRO is quite clear. Observe the tiles produced by stiching images from different dates together. The data is unavilable for the region displayed in color at left."
+  type="NORMAL"
+  hide
+/>
+
+### The RAW dataset
+
+You need to have a USGS account and specify your intentions to download the CORONA dataset. This dataset is mainly used for ecological research nowadays. The USGS provides [an excellent tool](https://earthexplorer.usgs.gov/ "https://earthexplorer.usgs.gov/") to draw a Region of Interest (RoI) first, and then it gives the part of the dataset containing the RoI.
+
+I chose the Kuduremukha area falling in Western Ghats of Karnataka State in India as RoI to understand how human activity has altered the land composition.
+
+The dataset is a huge `.zip` file containing the photo film split into smaller parts. Each part is a `.tiff` image, of which standard image viewers could not open due to its huge size.
+
+Thankfully, Geographical Information System (GIS) software like QGIS are designed to handle such files as raster layers. Opening one of the images in QGIS reveals "Top secret" and imagery date and other codes at the border of the film.
+
+<IndexedImage
+  src="corona-dataset-1.png"
+  index={0}
+  caption="Metadata at the border of one of the CORONA photofilms"
+  type="NORMAL"
+  hide
+/>
+
+As mentioned earlier, this dataset is not geo-referenced and contains obstructions like cloud, making finding a geographic feature and comparing it to the current hard.
+
+<IndexedImage
+  src="corona-dataset-7.png"
+  index={6}
+  caption="The raw CORONA film showing cloud covered west coast of India near Mangaluru, on the hot summer afternoon of 29 March 1979. Observe no clouds over the Western Ghats and Malenadu at top left. This file is around a GB in size."
+  type="NORMAL"
+  hide
+/>
+
+### ISRO Bhuvan version
+
+The ISRO Bhuvan version of the dataset is geo-referenced and cleaned. It can be viewed in the [Bhuvan portal](https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.php "https://bhuvan-app1.nrsc.gov.in/bhuvan2d/bhuvan/bhuvan2d.php") by selecting that layer. However, the User Experience of the Bhuvan portal is not smooth, and I felt zooming did not work correctly.
+
+Fortunately, ISRO’s map server follows the standard `MapCache` protocol and can be used by any GIS client. I used Google Earth Pro to import the layer as additional imagery. It is easy to compare the historical imagery with the current scenario by enabling this layer. After tweaking the position and rotation a little bit, the layer becomes perfect. I have exported the `.kml` file of the layer to use it by importing it in [Google Earth Pro](https://www.google.com/intl/en_in/earth/versions/#download-pro "https://www.google.com/intl/en_in/earth/versions/#download-pro"). You can download it [here](https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716 "https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716").
+
+## Enter the Time Machine!
+
+We shall explore some of the changes that are significantly noticeable from the CORONA-era to today.
+
+### The Kuduremukha mountain was preparing to be destroyed.
+
+The satellite imagery around the Kuduremukha region dates back to the 1970s, making it a half-century-old image! The KIOCL Mining had not been started yet, and the pilot testing and road construction were in progress.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-8.png" index={7} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-9.jpeg" index={8} nocaption hide />
+  }
+  caption="The Kuduremukha region during 1970s and today. The KIOCL had not started mining Iron ore yet; the pilot project and road construction were in progress. The white patched line in the CORONA imagery is the road. You can see the submerged valley to build the tailing pond, mined mountains, and remains of the processing facilities in current-day imagery."
+/>
+
+You can read more about KIOCL mining and its ecological effects in my article <Link to="/blog/untamed-horse">The Untamed Horse</Link>.
+
+### Pseudo-Forestation
+
+When we move to Kalasa, a nearby town, we see dramatic changes. While the settlement has grown, the forest cover seems to have increased as well, contradicting the deforestation happening elsewhere.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-10.jpeg" index={9} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-11.jpeg" index={10} nocaption hide />
+  }
+  caption="The Kalasa town during 1970s and today. You can see an increase in green cover across white areas. These white areas were grasslands and hosted a high degree of biodiversity."
+/>
+
+Unfortunately, this is not the native forest. The Forest Department had planted foreign, invasive tree species in the shola-like grasslands. These trees still survive. In some places, they have changed the soil composition, allowing native flora to take over wherever they had been fallen. In other places, they are not letting any other flora grow. They have also contributed to decreased water table capacity and threatened some grassland flora to extinction. I will be writing more about this topic in the coming days.
+
+### Native Forest is taking over the Grassland
+
+If we shift our focus to the untouched shola forests of Kuduremukha, we see a difference in the dark green forests. They have increased in their area over the last 50 years. This might be due to the increase in CO<sub>2</sub> levels in the atmosphere with global climate change. This observation is consistent with the research done by [R.Sukumar et al. (1993)](https://www.nature.com/articles/364703a0 "https://www.nature.com/articles/364703a0").
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-12.jpeg" index={11} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-13.jpeg" index={12} nocaption hide />
+  }
+  caption="Increase in shola forest cover with decrease in grassland, around Gangadikallu mountain in Kuduremukha National Park"
+/>
+
+It is interesting to see shola grasslands atop the foothills of the Western Ghats facing the coast completely covered by the forests.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-14.jpeg" index={13} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-15.jpeg" index={14} nocaption hide />
+  }
+  caption="Forests have taken over the grasslands at some of the coastal foothills of Western Ghats in Kuduremukha National Park. The rocks of Kurinjalu mountain at bottom right."
+/>
+
+This is not the trend in Kuduremukha alone. We can see the same thing in other places, like near Tadiyandamol in Kodagu.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-16.jpeg" index={15} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-17.jpeg" index={16} nocaption hide />
+  }
+  caption="The shola forest taking over grassland can be observed near Tadiyandamol, too"
+/>
+
+### Agriculture Focus is shifting away from rice.
+
+The rice fields were a typical landscape across the Indian plains -- be it on the coast or plateau. The farmers are now migrating towards cash crops like Area nut, Cacao, and, Rubber. This is evident by the increase in green cover in the pictures of the coast.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-18.jpeg" index={17} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-19.jpeg" index={18} nocaption hide />
+  }
+  caption="The rice fields have been converted into cash-crop farms as seen in Uppinangady, where the river Kumaradhara (from South) and Netra (from East) confluence."
+/>
+
+### Cities have grown bigger.
+
+The celebrated Kannada writer Tejaswi in one of his works, "_Parisarada Kathe_", notes the city of Mysuru growing by consuming the farmlands around. This is seen in the imagery of Mysuru near Chamundi betta, where the earlier farmlands are now apartments.
+
+<ImageCompare
+  imageOne={
+    <IndexedImage src="corona-dataset-20.jpeg" index={19} nocaption hide />
+  }
+  imageTwo={
+    <IndexedImage src="corona-dataset-21.jpeg" index={20} nocaption hide />
+  }
+  caption="The growth of the Mysuru city as seen around Chamundi Betta. Note the decrease in the extent of rice fields."
+/>
+
+Unfortunately, the imagery of Bengaluru is not clear. If it had been, we could study more about the disseapearence of numerous lakes.
+
+### You add more!
+
+The CORONA data is more extensive than what I have explored here in this article. Go ahead and [download](https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716 "https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716") the .kml file, import it in Google Earth Pro and discover some changes!
+
+## Concluding Remarks
+
+The CORONA program was successful in achieving its goals. The US had intelligence information on every Soviet missile even before the Soviets made it public. This stopped the cold war from turning into a full-fledged world war. I did not understand why the US was interested in images of South India; however, that did a great benefit to us, as it serves as the time machine to the past. The CORONA dataset is an essential treasure-trove for ecological researchers worldwide. Its high-resolution data can be used to understand the changes that happened in the last half a century. After looking into the dataset, I found that some of the forests, which I thought were old, were actually young. This is not my experience alone, a quote from an NYT article reads --
+
+> The images even challenged our assumptions about untouched ecosystems — revealing, more than [once](https://www.euronatur.org/fileadmin/docs/Urwald-Kampagne_Rumaenien/PRIMOFARO_24092019_layouted.pdf "https://www.euronatur.org/fileadmin/docs/Urwald-Kampagne_Rumaenien/PRIMOFARO_24092019_layouted.pdf"), that presumed old-growth forests are actually younger than 70 years old.
+>
+> – **Marion Renault** in [It Spied on Soviet Atomic Bombs. Now It’s Solving Ecological Mysteries](https://www.nytimes.com/2021/01/05/science/corona-satellites-environment.html "https://www.nytimes.com/2021/01/05/science/corona-satellites-environment.html")
+
+The ISRO Bhuvan Corona dataset does not cover the entire CORONA coverage in India due to the data lost during cleaning. The lost data would have revealed much information. It is always important to look back before building the future. The CORONA dataset provides insights into some of the biggest mistakes – mining in eco-sensitive areas, disturbing habitats by filling Grassland with invasive species, to name a few. We mustn't repeat such mistakes ever.
+
+## Further Information
+
+- [A point in time: the corona story](https://www.youtube.com/watch?v=1khtQR-GgW4&ab_channel=PublicResourceOrg "https://www.youtube.com/watch?v=1khtQR-GgW4&ab_channel=PublicResourceOrg") -- An excellent US documentary about the inception and operations of the CORONA program
+- [A δ<sup>13</sup>C record of late Quaternary climate change from tropical peats in southern India](https://www.nature.com/articles/364703a0 "https://www.nature.com/articles/364703a0") – Discusses how varying atmospheric carbon levels have impacted the balance between grasslands and forests in the shola ecosystem.
+- Download the .kml file [here](https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716 "https://gist.github.com/vinayakakv/a50f08799180680990b4a95923d1b716")
+- Download Google Earth Pro [here](https://www.google.com/intl/en_in/earth/versions/#download-pro "https://www.google.com/intl/en_in/earth/versions/#download-pro").

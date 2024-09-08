@@ -1,0 +1,121 @@
+---
+title: I built the Blog (again)!
+date: 2021-11-27
+excerpt: The experience and frustrations of developing a blog from scratch instead of using managed options.
+---
+
+<IndexedImage
+  src="i-built-the-blog-4.jpeg"
+  index={3}
+  caption="I always wanted a fully customizable blog to share the stories behind the photos like this."
+  type="FULL_WIDTH"
+  hide
+/>
+
+When I started blogging, my options regarding the blogging platform were quite limited, as I was not much familiar with building things by coding. Thus, I went with Wordpress.com -- although Blogger was a quite popular option at this time, and whose layout I disliked. As time went on, the free themes and layouts of Wordpress.com were too limiting for me; thus, I tried a more minimal approach with Medium.com. The transitioning experience was not fruitful at all. Since I was comfortable with coding by then, I chose to use Jekyll. With Markdown files as the content backend, I hosted my blog at github.io. Soon, I turned out to Vercel for static hosting, and the blog was live at [https://vichitra.vercel.app/](https://vichitra.vercel.app/ "https://vichitra.vercel.app/").
+
+## Jumping between the Frameworks
+
+In terms of the layout and theming freedom, Jekyll was great. I could now manually edit the theme HTML and configure the styles via CSS. I also used JS on several occasions to customize the behavior of the website. However, there was one striking limitation -- the website was _too_ slow. I blog with a lot of photos, as my blog is a storyline behind those photos. Since I was uploading images at their high quality with minimal optimizations, page scores were too bad.
+
+<IndexedImage
+  src="i-built-the-blog-1.png"
+  index={0}
+  caption="PageSpeed Insights report for my old Jekyll blog."
+  type="NORMAL"
+  hide
+/>
+
+At that time, however, I discovered React.js. Its component-based architecture was one of the things that I wanted and dreamed of since I started building web apps (for college projects, though!). The Static Site Generation tools like Next.js offered excellent Image optimization capabilities, and I wanted to try it. The configuration was similar to the Jeykell blog -- content would be sourced from Markdown, and the Next.js replaced Jekyll.
+
+While I was looking into Next.js, [one of my friends](https://sourabhdaroji.com/ "https://sourabhdaroji.com/") was looking into Gatsby. In the data sourcing part, Gatsby's design differed from Next.js; while Gatsby provided GraphQL APIs to fetch the data, it was left to the users in Next.js. I was burnt out soon with Next.js by manually writing the code for parsing markdown files and sourcing it to the page components.
+
+Then, naturally, I was attracted to Gatsby. Thanks to its plugin-based system, I could source Markdown into the page by just installing a plugin. I also started loving GraphQL and its capabilities. At that time, I [discovered](https://www.joshwcomeau.com/blog/how-i-built-my-blog/ "https://www.joshwcomeau.com/blog/how-i-built-my-blog/") MDX, where I could use React components within the Markdown -- this was a great thing as it would escalate the possibilities of interaction. While on the Jekyll site, I wrote a custom template to include panoramic images in the blog post. With MDX, I can just use a Panorama component and get the things done. The implementation of MDX was a matter of installing another plugin.
+
+## The Challenges
+
+With the content pipeline in place, it was time to design the look and feel of the website. Although there were many starters and themes in the Gatsby, I could not entirely like any of them and was lazy to upgrade their dependencies to the latest versions. So, I decided to learn UI design and design the website on my own, although I had no prior design experience!
+
+### The Design Phase
+
+I was a Masters's researcher at NITK at that time. Motivated by the pandemic, NITK allowed free Coursera access to its students as many other universities did. I enrolled in a UI/UX design fundamentals course, learned the basics, and was ready to design my first website. The result was a [Figma file](https://www.figma.com/file/qurRteWLOeq0HLI14lDOjZ/Portfolio-Design?node-id=0%3A1 "https://www.figma.com/file/qurRteWLOeq0HLI14lDOjZ/Portfolio-Design?node-id=0%3A1") with light/dark and mobile/desktop varients.
+
+<iframe
+  style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+  width="100%"
+  height="450"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FqurRteWLOeq0HLI14lDOjZ%2FPortfolio-Design%3Fnode-id%3D264%253A19%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D264%253A19%26show-proto-sidebar%3D1"
+  allowfullscreen
+></iframe>
+
+While the design looked great and attractive during the it was built, it looked dull and too much distracting after a week. Nevertheless, I started turning the design into code as soon as I finished designing.
+
+### The Coding Phase
+
+I had a lot of options to choose from to stylize the Gatsby project. Initially, I went with Tailwind CSS as I saw them in many starters. Soon, I ended up editing `tailwind.config.js` too much to customize finer details. The `styled-components` was the way to go.
+
+Using a combination of CSS variables and transitions, I was able to implement theme switching. In some days, the website started looking at the design file. However, the design seemed to look boring and dull.
+
+### The Demotivation
+
+Once the design looked pale and dull, I was left with no choice to improve its design. By this time, I realized that I was not a guru of design. Since there were no good themes that satisfied my taste, I partially dropped off the plan of the website. Since I was at the end of my Masters's research at that time, I was busy [writing some research papers](https://ieeexplore.ieee.org/document/9478141 "https://ieeexplore.ieee.org/document/9478141") and [getting them funded and published](https://www.techrxiv.org/articles/preprint/Heterogeneous_Graph_Convolutional_Networks_for_Android_Malware_Detection_using_Callback-Aware_Caller-Callee_Graphs/15072087 "https://www.techrxiv.org/articles/preprint/Heterogeneous_Graph_Convolutional_Networks_for_Android_Malware_Detection_using_Callback-Aware_Caller-Callee_Graphs/15072087"). It meant that I had absolutely zero work-life balance and could not focus on any of my personal projects.
+
+## It all Changed
+
+While the pandemic was devasting to many, it was life-changing to others. I got a chance to spend more time (all!) in my native and had a lot of stories to tell.
+
+### The Social Dilemma
+
+While Social Media seems a perfect choice to tell the stories and connect to the rest of the world, the giants have their own bigger marketing strategies. I realized lately that I was quite addicted to social media and posting photos on Instagram even if they had no backing stories. After watching [several documentaries on Social Media](https://www.youtube.com/watch?v=uaaC57tcci0&ab_channel=Netflix "https://www.youtube.com/watch?v=uaaC57tcci0&ab_channel=Netflix"), I quit Instagram and limited the use of Whatsapp.
+
+With no platform to share stories, the blog seemed to be a perfect option. To write a blog post needs a lot of preparation and dedication, and content quality has to be great. But I was still not clear on how to implement a blog.
+
+### Some Good Themes!
+
+One day, I was browsing through Gatsby, one design named [_Absurd_](https://gatsby-absurd.vercel.app/ "https://gatsby-absurd.vercel.app/") caught my eye. For me, the _Absurd_ was beautiful and perfect! The code was open-source, which meant that I did need not build the website designs from scratch.
+
+### A bit of Discipline
+
+By the time all of these were happening, I had joined a start-up, [Mainteny](https://mainteny.com "https://mainteny.com"). Being in the project-driven industry, in general, teaches a lot of things about project organization. I started using Asana boards as a way to manage the progress of the website and the writings. Whenever I have a new idea in my mind, I create a ticket for it. Whenever you finish working on a ticket and move it to the "Done" section, you will be happy and a bit motivated. **Quantifiable Measure of Progress** is the key here.
+
+<IndexedImage
+  src="i-built-the-blog-2.png"
+  index={1}
+  caption="The Asana board for the website project"
+  type="NORMAL"
+  hide
+/>
+
+Apart from that, start-ups focus on a faster feedback loop. The more the feedback, the more the product becomes good. I also adopted that - instead of waiting for a complete website to be finished to put on the content, I'm following an incremental approach, where I plan to roll out features and fixes continuously, like how the articles get published.
+
+## Here is the blog!
+
+This blog is coded in Gatsby and sources the data from GraphCMS with MDX support. Here are some of the alternatives I considered for the Tech stack and the CMS and why I ended up using a particular technology.
+
+### The Tech Stack
+
+I looked into NextJS and Wordpress.com before zeroing on Gatsby. While NextJS has improved a lot, I still find it hard to write custom logic to read, parse and source the data -- That's an unnecessary headache if I am focused on the outcome, and any errors there would eat a lot of time.
+
+When it comes to Wordpress.com, it has amazingly changed in terms of theming and document editing experience. For instance, they now have a slider component to compare two images. However, the restrictiveness is still there, and for a nice-looking domain, we have to pay (their `*.wordpress.com` domains were free earlier, now it looks more random than that).
+
+Instead of choosing any starter for Gatsby, I started with `gatsby-starter-hello-world`, with a `Hello World!` text on the home page. By copy-edit-adopting the files from both the theme and my earlier Gatsby implementation, you see what is there now today.
+
+### The CMS
+
+The good old way to source the data to a blog is through the file system — a folder with blog posts inside it in the MDX format. However, that needs to be edited and pushed to the repository along with the code. Although I could have stored it in a separate private repo and linked to the blog code using git submodules, I felt the need for a clear separation of data and content.
+
+I came across GraphCMS while looking into MDX support for Gatsby in the CMS (it turns out that if a CMS supports Markdown output, the MDX plugin takes care of the rest). I was pleased to see the typed relations and two-way relationships between the content schemas in the Gatsby -- This is what I wanted. I have two main Schemas, `BlogPost`, and `Photo` with their subfields. `BlogPost` can have multiple `Photo`s, and each `Photo` is associated exactly with a `BlogPost`. I also looked into Contentful; while they support relationships between content schemas, they are neither typed nor two-way referenced.
+
+<IndexedImage
+  src="i-built-the-blog-3.png"
+  index={2}
+  caption="The GraphCMS BlogPost schema. Two way typed reference in the Photos is the key point to look into. "
+  type="NORMAL"
+  hide
+/>
+
+While the GraphCMS source plugin has some [issues](https://github.com/GraphCMS/gatsby-source-graphcms/issues/209 "https://github.com/GraphCMS/gatsby-source-graphcms/issues/209") with Gatsby v4, I momentarily downgraded my setup to Gatsby v3 and got the plugin working. Their UI also has some glitches, but it serves the purpose.
+
+## Moving Forward
+
+This website is still far from finished. I plan to focus on usability enhancements such as the dark theme before moving on to other optional things like subscription mechanisms. Parallelly, as I already said, I have a lot of stories to tell, and they will be posted hopefully every week.
